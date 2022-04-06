@@ -1,0 +1,36 @@
+﻿
+@model WebApplication1.Controllers._Product
+@using WebApplication1.Controllers
+
+@{
+    ViewData["Title"] = "AddDish";
+    string a = "";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Подберите количество ингредиентов для одной порции @Model.Name</h2>
+</div>
+<form class="margin-top" method="post">
+    <div class="AddDishUnitsForm">
+        @for (var @i = 0; @i < @Model.Composition.Count;@i++)
+        {
+            <div>
+                <h2>@Model.Composition[@i]</h2>
+                @{a += @Model.Composition[@i] + ',';}
+            </div>
+
+            <div>
+                <select name="Unit">
+                    <option value="@Model.Unit[@i]">@Model.Unit[@i]</option>
+                </select>
+            </div>
+
+            <div>
+                <input name="Count" type="number" step="0.01" min=0 required/>
+            </div>
+        }
+    </div>
+    <div class="button">
+        <button type="submit" class="btn btn-1 btn-success" asp-controller="AddDish" asp-action="OnPostSecond" asp-route-name="@Model.Name" asp-route-a="@a">Добавить</button>
+    </div>
+</form>

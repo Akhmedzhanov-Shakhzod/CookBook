@@ -1,0 +1,71 @@
+﻿
+@model WebApplication1.Controllers._DishInfo
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to CookBook Dishes</h1>
+</div>
+
+<a class="btn btn-success btn-add1" asp-area="" asp-controller="AddDish" asp-action="AddDish" asp-route-n="@Model.ID">Добавить</a>
+
+<div class="margin-top">
+    <ul class="dish_types">
+        <li class="nav-item">
+            @if(@Model.ID == 0){
+                <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="0">@Model._DishesTypes[0]</a>
+            }
+            else{
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="0">@Model._DishesTypes[0]</a>
+            }
+        </li>
+        <li class="nav-item">
+            @if(@Model.ID == 1){
+                <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="1">@Model._DishesTypes[1]</a>
+            }
+            else{
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="1">@Model._DishesTypes[1]</a>
+            }
+        </li>
+        <li class="nav-item">
+            @if(@Model.ID == 2){
+                <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="2">@Model._DishesTypes[2]</a>
+            }
+            else{
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="2">@Model._DishesTypes[2]</a>
+            }
+        </li>
+        <li class="nav-item">
+            @if(@Model.ID == 3){
+                <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="3">@Model._DishesTypes[3]</a>
+            }
+            else{
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="3">@Model._DishesTypes[3]</a>
+            }
+        </li>
+        <li class="nav-item">
+            @if(@Model.ID == 4){
+                <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="4">@Model._DishesTypes[4]</a>
+            }
+            else{
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="4">@Model._DishesTypes[4]</a>
+            }
+        </li>
+    </ul>
+</div>
+
+<div class="container margin-top" id="menu_dishes">
+@for(var @i = 0; @i < @Model._Dishes[@Model.ID].Count; @i++)
+{
+    var @_dish  = @Model._Dishes[@Model.ID][@i];
+
+    <div class="_Description_Dishes">
+        <h3><a asp-area="" asp-controller="ChangeDishInfo" asp-action="ChangeDishInfo" asp-route-name="@_dish[0]">@_dish[0]</a></h3>
+        <h4>@_dish[1] - com</h4>
+        <p>@_dish[2]</p>
+    </div>
+}
+</div>
+
+

@@ -1,0 +1,22 @@
+﻿
+@model List<_Product>;
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to CookBook Products</h1>
+</div>
+
+<a class="btn btn-success btn-add1" asp-area="" asp-controller="AddProduct" asp-action="AddProduct">Добавить</a>
+
+<div class="container margin-top" id="menu_dishes">
+@for(var @i = 0; @i < @Model.Count; @i++)
+{
+    <div class="_Description_Product">
+        <h3><a asp-area="" asp-controller="ChangeProductInfo" asp-action="ChangeProductInfo" asp-route-name="@Model[@i].Name" asp-route-price="@Model[@i].Price" asp-route-typeunit="@Model[@i].Type">@Model[@i].Name</a></h3>
+        <p>@Model[@i].Price - com</p>
+        <pre>/   @Model[@i].Type</pre>
+    </div>
+}
+</div>

@@ -1,0 +1,436 @@
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+header {
+    background-color: #cbe1eb;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #cbe1eb;
+}
+
+/* panel dishes type 
+--------------------------------------- */
+
+ul.dish_types {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul.dish_types li {
+    list-style-type: none;
+}
+
+ul.dish_types li:hover {
+    cursor: pointer;
+}
+
+ul.dish_types li a {
+    color: black;
+    text-decoration: none;
+}
+
+.margin-top {
+    margin-top: 5%;
+}
+
+._Description_Dishes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 3fr;
+    grid-template-areas: "name price"
+        "description description";
+}
+
+._Description_Dishes h3 {
+    grid-area: name;
+}
+
+._Description_Dishes h4 {
+    grid-area: price;
+    text-align: right;
+}
+
+._Description_Dishes p {
+    grid-area: description;
+}
+
+._Description_Dishes h3 a, ._Description_Product h3 a, .OrdersValue h4 a {
+    color: black;
+    text-decoration: none;
+}
+
+.active {
+    font-weight: bold;
+}
+
+a.btn-add1 {
+    text-decoration: none;
+    float: right;
+    color: white;
+}
+
+/*--------------------------------
+    Panel Add Dishes*/
+
+.AddDishForm label {
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+.AddDishForm input {
+    margin-top: 10px;
+    height: 40px;
+    width: 300px;
+    border-radius: 20px/20px;
+    border: solid 1px black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.82);
+}
+
+.AddDishForm input:focus, .AddDishForm textarea:focus {
+    border: solid 2px rgb(173, 171, 169);
+    transform: translateX(15px);
+    width: 285px;
+}
+
+.AddDishForm textarea {
+    margin-top: 10px;
+    height: 100px;
+    width: 300px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.82);
+    resize: vertical;
+    min-height: 100px;
+}
+
+.AddDishForm {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 0.4fr 0.3fr 0.3fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "name type price"
+        "description composition composition"
+        "none none submit";
+}
+
+.name {
+    grid-area: name;
+}
+
+.price {
+    grid-area: price;
+}
+
+.price h3 {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.price input {
+    width: 100px;
+}
+
+.price input:focus {
+    border: solid 2px rgb(173, 171, 169);
+    transform: translateX(15px);
+    width: 85px;
+}
+
+.types {
+    margin-top: 5%;
+    grid-area: type;
+}
+
+.description, .composition {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+}
+
+.description {
+    grid-area: description;
+}
+
+.composition {
+    grid-area: composition;
+}
+
+.description label, .composition label {
+    margin: auto 0;
+    margin-right: 30px;
+}
+
+
+
+.button {
+    grid-area: submit;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.button button {
+    margin: auto 15% 0 auto;
+}
+
+button.btn-1 {
+    margin: auto 5% 0 auto;
+}
+
+.AddDishUnitsForm {
+    display: grid;
+    grid-template-columns: 0.5fr 0.3fr 0.2fr;
+}
+
+.ChangeDish {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:0.2fr 0.8fr;
+}
+
+.ChangeDish textarea {
+    margin-top: 10px;
+    height: 360px;
+    width: 500px;
+    border:none;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.ChangeDish input {
+    margin-top: 10px;
+    width: 500px;
+    border: none;
+}
+
+.ChangeDish-input {
+    width: 80px !important;
+}
+
+.ChangeDish textarea:focus, .ChangeDish input:focus {
+    border: solid 2px rgb(173, 171, 169);
+    transform: translateX(15px);
+    width: 485px;
+}
+
+.btn-delete {
+    float:left;
+    margin:0 !important;
+}
+
+._Description_Product {
+    display:grid;
+    grid-template-columns:3fr 0.4fr 1fr;
+}
+
+button.button-product {
+    margin: auto 40% 0 auto !important;
+}
+
+.ChangeProduct {
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+.ChangeProduct input {
+    margin-top:10%;
+    border:none;
+}
+
+.ChangeProduct select {
+    margin-top:10%;
+    border:none;
+}
+
+.Orders, .OrdersValue {
+    display: grid;
+    grid-template-columns: 0.5fr 0.3fr 0.3fr 0.4fr 0.3fr;
+}
+
+.margin-bottom {
+    margin-bottom:2%;
+}
+
+.AddOrderForm{
+    display:flex;
+    justify-content:space-between;
+}
+
+.AddOrderForm button {
+    float:right;
+    margin-top:10%;
+    margin-right:50%;
+}
+
+.AddOrderForm select{
+    margin-top:5%;
+    border:none;
+}
+
+.AddOrderForm input {
+    margin-top: 10px;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px/20px;
+    border: solid 1px black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.82);
+}
+
+.AddOrderForm input:focus, .AddOrderForm textarea:focus, .ChangeOrder input:focus {
+    border: solid 2px rgb(173, 171, 169);
+    transform: translateX(15px);
+    width: 85px;
+}
+
+.input-price input{
+    width:100px;
+    border:none;
+}
+
+.ChangeOrder, .ChangeOrder-header {
+    display: flex;
+    justify-content: space-between;
+    height:40px;
+}
+
+.ChangeOrder select{
+    border:none;
+}
+
+.ChangeOrder input{
+    border:none;
+    width:100px;
+}
+
+.ChangeOrder div {
+    padding-bottom: 5%;
+    margin-right:0;
+}
+
+button.btn-save {
+    margin: auto 0 0 auto
+}
+
+input.oldPrice:focus {
+    width:100px;
+    border:none;
+    transform:none;
+}
+
+.CountdownHeader {
+    display:flex;
+    justify-content:space-between;
+}
+
+.CountdownHeader div pre,.CountdownHeader div input {
+    display:inline-block;
+    margin:0 auto;
+    vertical-align:middle;
+}
+
+.CountdownHeader select{
+    border:none;
+}
+
+.btn-printcountdown {
+    text-align:right;
+}
+
+.btn-printcountdown h6:hover, .ChangeOrder-header h6:hover {
+    cursor: pointer;
+}
+
+.btn-print-dish {
+    text-align:right;
+    width:100%;
+}
+
+.btn-print-dish h6 {
+    display: inline;
+    margin: auto 15% 0 auto;
+}
+
+.btn-print-dish h6:hover {
+    cursor:pointer;
+}
+
+.Product {
+    display:grid;
+    grid-template-columns:0.35fr 0.2fr 0.2fr 0.25fr;
+}
+
+.AddDishUnitsForm select {
+    width:120px;
+}

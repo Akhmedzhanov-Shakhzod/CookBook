@@ -1,0 +1,55 @@
+﻿
+
+@model WebApplication1.Controllers.AddOrderInfo
+
+
+@{
+    ViewData["Title"] = "AddOrder";
+}
+
+
+@if(@Model.Name == null)
+{
+<div class="text-center">
+    <h1 class="display-4">Welcome to add new order</h1>
+</div>
+<form  class="AddOrderForm margin-top" method="post">
+    <div class="">
+       <select name="NameDish">
+        @for (var @i = 0; @i < @Model.AllNameDishes.Count;@i++)
+        {
+            <option value="@Model.AllNameDishes[@i],@Model.AllPriceDishes[@i],">@Model.AllNameDishes[@i] @Model.AllPriceDishes[@i] - com</option>
+        }
+        </select>
+    </div>
+
+    <div class="">
+        <label>Номер заказа : </label>
+        <input name="Number" type="number" min="0" required value="@Model.NumberOrder">
+    </div>
+    
+    <div class="">
+        <label>Количество : </label>
+        <input name="Count" type="number" required min="1" value="@Model.CountOrder">
+    </div>
+
+    <div class="">
+        <button type="submit" class="btn btn-success" asp-controller="AddOrder" asp-action="Post">Добавить</button>
+    </div>
+</form>    
+    
+}
+
+<div class="text-center margin-top">
+    @if(@Model.Name != null)
+    {
+    <h4>Успешно добавленно @Model.Name в базу данных</h4>        
+    <div class="input-price">
+        <label>Цена заказа : </label>
+        <input type="number" name="Price" required readonly value="@Model.PriceOrder">  - com
+    </div>
+    <div class="margin-top">
+        <a class="btn btn-success" asp-area="" asp-controller="AddOrder" asp-action="PostContinue" asp-route-number="@Model.NumberOrder">Далее</a>
+    </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿
+
+@model WebApplication1.Controllers.ChangeDish
+@{
+    ViewData["Title"] = "Edit Dishes Info";
+}
+
+<div class="btn-print-dish">
+    <h6  id="btnPrint3" >Печатать</h6>
+</div>
+<form method="post">
+    <div id="PrintDish">
+        <div class="ChangeDish">
+            <h1><input type="text" name="Name" value="@Model.Name" required readonly></h1>
+    
+            <h2><input class="ChangeDish-input" type="number" name="Price" value="@Model.Dishes.PriceDishes" required min="0" /> - com</h2>
+    
+            <textarea name="Description">@Model.Description.Description</textarea>
+
+            @if(@Model.Formula.Count > 0)
+            {
+                <div class="ChangeDishProducts">
+                    @for(int i = 0;i < @Model.Formula.Count; i++)
+                    {
+                        @if(@Model.Formula_Unit_Product[i] == "по вкусу")
+                        {
+                            <h3>@Model.Formula_Product[i] @Model.Formula_Unit_Product[i]</h3>
+                        }
+                        else
+                        {
+                            <h3>@Model.Formula_Product[i] @Model.Formula_Count_Product[i]  @Model.Formula_Unit_Product[i]</h3>
+                        }
+                    }
+                </div>        
+            }
+        </div>
+    </div>
+
+    <div class="button">
+        <button type="submit" class="btn btn-danger btn-delete" asp-controller="ChangeDishInfo" asp-action="Delete" asp-route-name="@Model.Name">Удалить</button>
+        <button type="submit" class="btn btn-success" asp-controller="ChangeDishInfo" asp-action="Save" asp-route-name="@Model.Name">Сохранить</button>
+    </div>
+</form>
+
+

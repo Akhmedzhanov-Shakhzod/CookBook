@@ -1,0 +1,34 @@
+﻿
+@model WebApplication1.Controllers.ChangeProduct
+
+@{
+    ViewData["Title"] = "Edit Products Info";
+}
+
+<form method="post">
+    <div class="ChangeProduct">
+        <h1><input type="text" name="Name" value="@Model.Name" required readonly></h1>
+    
+        <h2><input class="ChangeDish-input" type="number" name="Price" value="@Model.Price" required /> - com</h2>
+
+        <select name="unit">
+        @for (var @i = 0; @i < @Model.Unit.Units.Count;@i++)
+        {
+            @if(@Model.Unit.Units[@i] == @Model.TypeUnit)
+            {
+                <option selected value="@Model.Unit.Units[@i]">@Model.Unit.Units[@i]</option>
+            }
+            else
+            {
+                 <option value="@Model.Unit.Units[@i]">@Model.Unit.Units[@i]</option>
+            }
+        }
+        </select>
+    </div>
+
+    <div class="button margin-top">
+        <button type="submit" class="btn btn-danger btn-delete" asp-controller="ChangeProductInfo" asp-action="Delete" asp-route-name="@Model.Name">Удалить</button>
+        <button type="submit" class="btn btn-success" asp-controller="ChangeProductInfo" asp-action="Save" asp-route-name="@Model.Name">Сохранить</button>
+    </div>
+</form>
+

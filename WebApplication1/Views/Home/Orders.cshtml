@@ -1,0 +1,62 @@
+﻿
+
+
+@model List<Orders>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to CookBook Orders</h1>
+</div>
+
+<a class="btn btn-success btn-add1" asp-area="" asp-controller="AddOrder" asp-action="AddOrder">Добавить</a>
+
+
+<div class="Orders margin-top margin-bottom">
+        <div>
+        <h4>Dish name</h4>
+    </div>
+    
+    <div>
+        <h4>Number order</h4>
+    </div>
+    
+    <div>
+        <h4>Count order</h4>
+    </div>
+    
+    <div>
+        <h4>Price order</h4>
+    </div>
+    
+    <div>
+        <h4>Date</h4>
+    </div>
+</div>
+
+@for(int i = 0; i<@Model.Count; i++)
+{
+    <div class="OrdersValue">
+        <div>
+        <h4><a asp-area="" asp-controller="ChangeOrderInfo" asp-action="ChangeOrderInfo" asp-route-number="@Model[@i].NumberOrder">@Model[@i].NameDish</a></h4>
+        </div>
+    
+        <div>
+            <h4>@Model[@i].NumberOrder</h4>
+        </div>
+    
+        <div>
+            <h4>@Model[@i].CountOrder</h4>
+        </div>
+    
+        <div>
+            <h4>@Model[@i].PriceOrder - com</h4>
+        </div>
+    
+        <div>
+            <h4>@Model[@i].Date.ToShortDateString()</h4>
+        </div>
+    </div>
+}

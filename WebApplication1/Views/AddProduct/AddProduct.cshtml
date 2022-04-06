@@ -1,0 +1,45 @@
+﻿
+@model WebApplication1.Controllers.UnitsP
+
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to add new product</h1>
+</div>
+
+<form  class="AddDishForm" method="post">
+    <div class="name">
+        <label>Название продукта : </label>
+        <input type="text" name="Name" required>
+    </div>
+
+    <div class="types">
+        <label>Единица измерение : </label>
+        <select name="unit">
+        @for (var @i = 0; @i < @Model.Units.Count;@i++)
+        {
+            <option value="@Model.Units[@i]">@Model.Units[@i]</option>
+        }
+        </select>
+    </div>
+
+    <div class="price">
+        <label>Цена : </label>
+        <input type="number" name="Price" min=0 required>
+        <h3>сом</h3>
+    </div>
+
+    <div class="button">
+        <button type="submit" class="btn btn-success button-product" asp-controller="AddProduct" asp-action="Post">Добавить</button>
+    </div>
+</form>    
+
+<div class="text-center margin-top">
+    @if(@Model.NameProduct != null)
+    {
+    <h4>Успешно добавленно @Model.NameProduct в базу данных</h4>        
+    }
+</div>
+

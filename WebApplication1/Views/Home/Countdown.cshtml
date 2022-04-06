@@ -1,0 +1,116 @@
+﻿
+@model WebApplication1.Controllers._Countdown
+@{
+    ViewData["Title"] = "Countdown";
+}
+
+<form method="post">
+    <div class="CountdownHeader margin-top">
+        <h5>Период : </h5>
+        <div>
+            <pre>От   </pre><input name="FromDate" type="date" value="@Model.From" required>
+        </div>
+
+        <div>
+            <pre>До   </pre><input name="ToDate" type="date" value="@Model.To" required>
+        </div>
+    
+        
+        @{/*<select>
+            <option value="Продажа">Продажа</option>
+            <option value="Покупки">Покупки</option>
+        </select>*/}
+        
+
+        <button class="btn btn-success" asp-controller="Print" asp-action="PrintCountdownValue">Гененировать</button>
+    </div>
+</form>
+
+<div class="margin-top btn-printcountdown">
+    <h6 id="btnPrint2">Печатать</h6>
+</div>
+
+@if (@Model.HasOrder)
+{
+    <div id="CountdownContent">
+        <div>
+            <h3><strong>Итоговая выручка за указанный период @Model.TotalPrice - com</strong></h3>
+        </div>
+        <div class="Product margin-top margin-bottom">
+            <h3>Name of product</h3>
+            <h3>Count</h3>
+            <h3>Price</h3>
+            <h3>Cost</h3>
+            @for(int @i = 0; @i < @Model.UsedProducts.Count; @i++)
+            {
+                @for(int @j = 0; @j < @Model.UsedProducts[@i].Count; @j++)
+                {
+                    <h4>@Model.UsedProducts[@i][@j]</h4>
+                }
+            }
+        </div>
+        <div>
+            <h3><strong>Итого расходов на продукты за указанный период @Model.AllPriceUsedProduct - com</strong></h3>
+        </div>
+        <div class="CountdownBody margin-top margin-bottom">
+            <div class="Orders margin-bottom">
+                <div>
+                    <h3>Dish name</h3>
+                </div> 
+                       
+                <div>  
+                    <h3>Number order</h3>
+                </div>
+    
+                <div>
+                    <h3>Count order</h3>
+                </div>
+    
+                <div>
+                    <h3>Price order</h3>
+                </div>
+    
+                <div>
+                    <h3>Date</h3>
+                </div>
+            </div>
+
+            @if(@Model.OrdersOnPeriod.Count > 0)
+            {
+                @for(int i = 0; i<@Model.OrdersOnPeriod.Count; i++)
+                {
+                <div class="OrdersValue">
+                    <div>
+                        <h4>@Model.OrdersOnPeriod[@i].NameDish</h4>
+                    </div>
+    
+                    <div>
+                        <h4>@Model.OrdersOnPeriod[@i].NumberOrder</h4>
+                    </div>
+    
+                    <div>
+                        <h4>@Model.OrdersOnPeriod[@i].CountOrder</h4>
+                    </div>
+    
+                    <div>
+                        <h4>@Model.OrdersOnPeriod[@i].PriceOrder - com</h4>
+                    </div>
+    
+                    <div>
+                        <h4>@Model.OrdersOnPeriod[@i].Date.ToLongDateString() @Model.OrdersOnPeriod[@i].Date.ToShortTimeString()</h4>
+                    </div>
+                </div>
+                }                
+            }
+        </div>
+        <div class="margin-bottom">
+            <h3><strong>Итого продаж за указанный период @Model.AllPriceSelledDishes - com</strong></h3>
+        </div>
+    </div>    
+}
+
+
+
+
+
+

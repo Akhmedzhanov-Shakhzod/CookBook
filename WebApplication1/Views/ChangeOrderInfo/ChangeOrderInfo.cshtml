@@ -1,0 +1,59 @@
+﻿
+@model WebApplication1.Controllers.ChangeOrderInfo
+
+@{
+    ViewData["Title"] = "Edit Orders Info";
+}
+
+
+<form method="post">
+
+    <div class="ChangeOrder-header margin-bottom">
+            <h5>Номер заказа : @Model.NumbreOrder</h5>
+            <h6  id="btnPrint1" >Печатать</h6>
+    </div>
+
+    <div id="ChangeOrderContent">
+            @for(int i = 0; i<@Model.DishesName.Count; i++)
+        {
+        <div class="ChangeOrder">
+
+            <div class="">
+                <select name="NameDish">
+                @for (int j = 0; j < @Model.AddOrderInfo.AllNameDishes.Count;j++)
+                {
+                    @if(@Model.AddOrderInfo.AllNameDishes[@j] == @Model.DishesName[@i])
+                    {
+                        <option selected value="@Model.AddOrderInfo.AllNameDishes[@j],@Model.AddOrderInfo.AllPriceDishes[@j],">@Model.AddOrderInfo.AllNameDishes[@j] @Model.AddOrderInfo.AllPriceDishes[@j] - com</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.AddOrderInfo.AllNameDishes[@j],@Model.AddOrderInfo.AllPriceDishes[@j],">@Model.AddOrderInfo.AllNameDishes[@j] @Model.AddOrderInfo.AllPriceDishes[@j] - com</option>
+                    }
+                }
+                </select>
+            </div>
+
+            <div class="">
+                <input name="Count" type="number" min="0" required value="@Model.CountOrders[@i]">
+                 <input name="oldCount" hidden value="@Model.CountOrders[@i]">
+            </div>
+
+            <div class="">
+                <input class="oldPrice" name="oldPrice" readonly value="@Model.PriceOrders[@i]"> - com
+            </div>
+            
+            <div class="">
+                @Model.dateOrders[@i]
+            </div>
+        </div>
+        }
+        <h5>Итого @Model.AllPrice - com</h5>
+    </div>
+    <div class="button margin-top">
+        <button type="submit" class="btn btn-danger btn-delete" asp-controller="ChangeOrderInfo" asp-action="Delete" asp-route-number="@Model.NumbreOrder">Удалить</button>
+        <button type="submit" class="btn btn-success btn-save" asp-controller="ChangeOrderInfo" asp-action="Save" asp-route-number="@Model.NumbreOrder" asp-route-n="@Model.DishesName.Count">Сохранить</button>
+    </div>
+</form>
+
+

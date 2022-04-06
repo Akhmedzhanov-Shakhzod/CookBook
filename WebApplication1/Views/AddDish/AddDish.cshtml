@@ -1,0 +1,72 @@
+﻿
+@model WebApplication1.Controllers._DishInfo
+@{
+    ViewData["Title"] = "AddDish";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to add new dish</h1>
+</div>
+
+<form  class="AddDishForm" method="post">
+    <div class="name">
+        <label>Название еды : </label>
+        <input type="text" name="Name" required>
+    </div>
+
+    <div class="types">
+        <label>Тип еды : </label>
+        <select name="Type">
+        @for (var @i = 0; @i < @Model._DishesTypes.Count;@i++)
+        {
+            @if(@Model._DishesTypes[@i] == @Model.CurrentType)
+            {
+                    <option selected value="@Model._DishesTypes[@i]">@Model._DishesTypes[@i]</option>
+            }
+            else
+            {
+                   <option value="@Model._DishesTypes[@i]">@Model._DishesTypes[@i]</option>
+            }
+            }
+        </select>
+    </div>
+
+    <div class="price">
+        <label>Цена : </label>
+        <input type="number" name="Price" min=0 required>
+        <h3>сом</h3>
+    </div>
+
+    <div class="description">
+        <label>Описание : </label>
+        <textarea name="Description"></textarea>
+    </div>
+    
+    <div class="composition">
+        <label>Составь :</label>
+        <select class="multi-select w-75" name="Composition" multiple data-selected-text-format="count > 3">
+        @for (var @i = 0; @i < @Model._Products.Count;@i++)
+        {
+            <option value="@Model._Products[@i]">@Model._Products[@i]</option>
+        }
+        </select>
+    </div>
+
+    <div class="button">
+        <button type="submit" class="btn btn-success" asp-controller="AddDish" asp-action="OnPost">Добавить</button>
+    </div>
+</form>    
+
+<div class="text-center margin-top">
+    @if(@Model._Name != null)
+    {
+    <h4>Успешно добавленно @Model._Name в базу данных</h4>        
+    }
+</div>
+
+
+
+
+
+
+
