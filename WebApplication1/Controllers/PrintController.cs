@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
             try
             {
                 DateTime from = DateTime.Parse(Request.Form["FromDate"]);
-                DateTime to = Convert.ToDateTime(Request.Form["ToDate"]);
+                DateTime to = DateTime.Parse(Request.Form["ToDate"]);
                 _Countdown countdown = new _Countdown(Actions.OrdersLoad(), from, to);
                 return View("/Views/Home/Countdown.cshtml", countdown);
             }

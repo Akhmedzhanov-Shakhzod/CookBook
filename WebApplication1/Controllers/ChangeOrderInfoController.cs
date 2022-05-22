@@ -104,7 +104,7 @@ namespace WebApplication1.Controllers
                     oldPrice.Add(Request.Form["oldPrice"][i]);
                     oldCount.Add(Request.Form["oldCount"][i]);
                     newprice = int.Parse(price[i])*int.Parse(count[i]);
-                    _dataBase.Update("orders", $"code_dishes = {codename[i]},count_order = {count[i]},price_order = {newprice},date_order = '{DateTime.Now}'", $"price_order = {oldPrice[i]} and number_order = {number} and count_order = {oldCount[i]}");
+                    _dataBase.Update("orders", $"code_dishes = {codename[i]},count_order = {count[i]},price_order = {newprice},date_order = '{DateTime.Now.ToString("yyyy-MM-dd")}'", $"price_order = {oldPrice[i]} and number_order = {number} and count_order = {oldCount[i]}");
                 }
             }
             catch

@@ -100,7 +100,7 @@ namespace WebApplication1.Controllers
                 addOrderInfo.PriceOrder = (int.Parse(addOrderInfo.PriceDishes)*count).ToString();
                 addOrderInfo.NumberOrder = int.Parse(number);
                 string codeDishes = _dataBase.ReadFromDataBaseOneItem("dishes", "code_dishes", $"name_dishes = '{addOrderInfo.Name}'");
-                _dataBase.Insert("orders", $"{codeDishes},{number},{count},{addOrderInfo.PriceOrder},'{addOrderInfo.Date}'");
+                _dataBase.Insert("orders", $"{codeDishes},{number},{count},{addOrderInfo.PriceOrder},'{addOrderInfo.Date.ToString("yyyy-MM-dd")}'");
             }
             catch
             {

@@ -14,8 +14,8 @@
     <h1 class="display-4">Welcome to add new order</h1>
 </div>
 <form  class="AddOrderForm margin-top" method="post">
-    <div class="">
-       <select name="NameDish">
+    <div class="dishes_order">
+       <select required name="NameDish">
         @for (var @i = 0; @i < @Model.AllNameDishes.Count;@i++)
         {
             <option value="@Model.AllNameDishes[@i],@Model.AllPriceDishes[@i],">@Model.AllNameDishes[@i] @Model.AllPriceDishes[@i] - com</option>

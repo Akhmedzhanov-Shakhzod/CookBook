@@ -64,10 +64,11 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background: rgb(209 255 219);
 }
 
 header {
-    background-color: #cbe1eb;
+    background-color: #59e9b4;
 }
 
 .footer {
@@ -76,7 +77,7 @@ header {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
-    background-color: #cbe1eb;
+    background-color: #b0ffd6;
 }
 
 /* panel dishes type 
@@ -300,17 +301,17 @@ button.button-product {
 }
 
 .ChangeProduct {
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+    margin-top: 50px;
+    display:flex;
+    justify-content: space-between;
+    width: 60%;
 }
 
 .ChangeProduct input {
-    margin-top:10%;
     border:none;
 }
 
 .ChangeProduct select {
-    margin-top:10%;
     border:none;
 }
 
@@ -433,4 +434,8 @@ input.oldPrice:focus {
 
 .AddDishUnitsForm select {
     width:120px;
+}
+
+.dishes_order {
+    margin-top: 10px;
 }

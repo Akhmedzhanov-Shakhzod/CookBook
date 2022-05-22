@@ -46,9 +46,10 @@ code_dishes int not null,
 number_order int not null,
 count_order int not null,
 price_order real not null,
-date_order datetime not null,
+date_order date not null,
 foreign key (code_dishes) references dishes(code_dishes),
 );
+
 
 create table descriptions(
 code_description int IDENTITY(1,1) primary key,
@@ -57,6 +58,7 @@ descriptions text not null
 foreign key (code_dishes) references dishes(code_dishes)
 );
 
+/*
 -- units
 insert into units(name_unit) values('киллограмм'),
 	('литр'),
@@ -182,8 +184,8 @@ insert into descriptions(code_dishes,descriptions) values
 
 -- example order
 insert into orders(code_dishes,number_order,count_order,price_order,date_order) values
-	(15,1,1,(select price_dishes from dishes where code_dishes = 15),GETDATE());
-
+	(15,1,1,(select price_dishes from dishes where code_dishes = 15),(DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), DAY(GETDATE()))));
+*/
 
 -- select info about dishes given types
 create or alter procedure DishesInfo
@@ -216,8 +218,8 @@ go
 --select * from dishes
 -- procedure for countdown used products
 create or alter procedure allPriceUsedProducts
-@date1 datetime,
-@date2 datetime
+@date1 date ,
+@date2 date 
 as
 declare @sum float = 0;
 declare @firstID int = (select min(code_order) from orders where date_order between @date1 and @date2);
@@ -236,9 +238,10 @@ begin
 end
 Select @sum as Summ
 
-exec allPriceUsedProducts '01.03.2022','20.03.2022'
+exec allPriceUsedProducts '2022-05-22','2022-05-22'
 go
 
+--select * from orders
 -- select used prodcuts
 create or alter procedure usedProductInOrder
 @numberOrder int
@@ -250,15 +253,16 @@ inner join dishes_formula
 on dishes_formula.code_ingredient = product.code_product
 inner join orders
 on orders.code_dishes = dishes_formula.code_dishes
-where orders.date_order between '01.03.2022' and '20.03.2022' and (orders.number_order = @numberOrder )
+where orders.number_order = @numberOrder 
 --group by product.name_product,dishes_formula.count_ingredient*orders.count_order,product.price_product,(dishes_formula.count_ingredient*product.price_product*orders.count_order)
 order by product.name_product
 end
+go
 
 exec usedProductInOrder 1
 exec usedProductInOrder 2
 go
-select * from orders
+--select * from orders
 
 -- check exist order via number of order
 create or alter procedure checkExist
@@ -380,3 +384,8 @@ select code_unit from product where name_product = 'Картофель'
 
 select name_unit from units where code_unit = 1
 */
+
+
+select * from dishes
+
+

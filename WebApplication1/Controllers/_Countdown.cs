@@ -37,6 +37,16 @@
             get { return to; }
             set { to = value; }
         }
+        public string From1
+        {
+            get;
+            set;
+        }
+        public string To1
+        {
+            get;
+            set;
+        }
         public double AllPriceSelledDishes
         {
             get { return allPriceSelledDishes; }
@@ -60,14 +70,53 @@
         public _Countdown()
         {
         }
-        public _Countdown(List<Orders> orders,DateTime from,DateTime to)
+        public _Countdown(List<Orders> orders, DateTime from, DateTime to)
         {
+            var a = $"{from.Year}";
+            var b = $"{to.Year}";
+
+            if(from.Month < 10)
+            {
+                a += $"-0{from.Month}";
+            }
+            else
+            {
+                a += $"-{from.Month}";
+            }
+            if(to.Month < 10)
+            {
+                b += $"-0{to.Month}";
+            }
+            else
+            {
+                b += $"-{to.Month}";
+            }
+            
+            if(from.Day < 10)
+            {
+                a += $"-0{from.Day}";
+            }
+            else
+            {
+                a += $"-{from.Day}";
+            }
+            if(to.Day < 10)
+            {
+                b += $"-0{to.Day}";
+            }
+            else
+            {
+                b += $"-{to.Day}";
+            }
+
+            this.From1 = a;
+            this.To1 = b;
             _DataBase _dataBase = new _DataBase();
             List<List<string>> tempUsedProduct = new List<List<string>>();
             hasOrder = true;
             this.orders = orders;
-            this.from = from;
-            this.to = to;
+            this.From = from;
+            this.To = to;
             ordersOnPeriod = new List<Orders>();
             int tempNumberOrder = -1;
             for (int i = 0,c = 0; i < orders.Count; i++)
@@ -165,6 +214,7 @@
 
             for(int i = 3; i < usedProducts1[0].Count; i+=4)
             {
+                this.allPriceUsedProduct += Convert.ToDouble(usedProducts1[0][i]);
                 usedProducts1[0][i] += " - com";
                 //usedProducts1[0][i-1] += " - com";
             }
@@ -175,8 +225,10 @@
             }
 
             this.usedProducts = usedProducts1;
-            this.allPriceUsedProduct = Convert.ToDouble(_dataBase.ReadFromDataBaseOneItem($"exec allPriceUsedProducts '{from}','{to}'"));
+            //this.allPriceUsedProduct = Convert.ToDouble(_dataBase.ReadFromDataBase($"exec allPriceUsedProducts '{from}','{to}'"));
+            this.allPriceUsedProduct = Math.Round(this.allPriceUsedProduct,2);
             this.totalPrice = this.allPriceSelledDishes - this.allPriceUsedProduct;
+            this.totalPrice = Math.Round(this.totalPrice,2);
         }
 
     }

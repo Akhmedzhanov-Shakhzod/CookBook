@@ -16,7 +16,7 @@
 
     <div class="types">
         <label>Тип еды : </label>
-        <select name="Type">
+        <select name="Type" required>
         @for (var @i = 0; @i < @Model._DishesTypes.Count;@i++)
         {
             @if(@Model._DishesTypes[@i] == @Model.CurrentType)
@@ -44,7 +44,7 @@
     
     <div class="composition">
         <label>Составь :</label>
-        <select class="multi-select w-75" name="Composition" multiple data-selected-text-format="count > 3">
+        <select required class="multi-select w-75" name="Composition" multiple data-selected-text-format="count > 3">
         @for (var @i = 0; @i < @Model._Products.Count;@i++)
         {
             <option value="@Model._Products[@i]">@Model._Products[@i]</option>

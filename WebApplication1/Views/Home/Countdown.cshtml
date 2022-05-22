@@ -8,11 +8,11 @@
     <div class="CountdownHeader margin-top">
         <h5>Период : </h5>
         <div>
-            <pre>От   </pre><input name="FromDate" type="date" value="@Model.From" required>
+            <pre>От   </pre><input name="FromDate" type="date" value=@Model.From1 required>
         </div>
 
         <div>
-            <pre>До   </pre><input name="ToDate" type="date" value="@Model.To" required>
+            <pre>До   </pre><input name="ToDate" type="date" value=@Model.To1 required>
         </div>
     
         
@@ -97,7 +97,7 @@
                     </div>
     
                     <div>
-                        <h4>@Model.OrdersOnPeriod[@i].Date.ToLongDateString() @Model.OrdersOnPeriod[@i].Date.ToShortTimeString()</h4>
+                        <h4>@Model.OrdersOnPeriod[@i].Date.ToShortDateString()</h4>
                     </div>
                 </div>
                 }                

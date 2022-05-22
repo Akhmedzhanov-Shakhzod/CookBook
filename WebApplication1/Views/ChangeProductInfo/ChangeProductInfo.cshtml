@@ -7,9 +7,11 @@
 
 <form method="post">
     <div class="ChangeProduct">
-        <h1><input type="text" name="Name" value="@Model.Name" required readonly></h1>
+        <h5>@Model.Name</h5>
     
-        <h2><input class="ChangeDish-input" type="number" name="Price" value="@Model.Price" required /> - com</h2>
+        <div>
+            <input class="ChangeDish-input" type="number" name="Price" value="@Model.Price" required /> - com
+        </div>
 
         <select name="unit">
         @for (var @i = 0; @i < @Model.Unit.Units.Count;@i++)
@@ -26,7 +28,7 @@
         </select>
     </div>
 
-    <div class="button margin-top">
+    <div class="ChangeProduct">
         <button type="submit" class="btn btn-danger btn-delete" asp-controller="ChangeProductInfo" asp-action="Delete" asp-route-name="@Model.Name">Удалить</button>
         <button type="submit" class="btn btn-success" asp-controller="ChangeProductInfo" asp-action="Save" asp-route-name="@Model.Name">Сохранить</button>
     </div>
